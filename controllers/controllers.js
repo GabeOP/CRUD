@@ -1,24 +1,29 @@
 const sequelize = require("../database/db");
 
 const Controllers = {
-  buscar: async (req, res) => {
+  buscar: async(req, res) => {
     try {
       const [results, metadatas] = await sequelize.query(
         "SELECT * FROM pessoas"
       );
-      res.json(results);
+      results.length === 0 ? res.json({data: "Não há registros de pessoas."}) : res.json({data: results});
     } catch (error) {
       res.json(error);
     }
   },
 
+  //Resolver retorno de id inválido
   buscarID: async (req, res) => {
     try {
       const { id } = req.params;
       const [results, metadatas] = await sequelize.query(
         `SELECT * FROM pessoas WHERE id = ${id}`
       );
-      res.json(results);
+      results.map((item)=>{
+        const teste = item.id
+        !teste ? res.json({data: "ID inválido. Tente novamente."}) : res.json({data:results});
+      })
+      
     } catch (error) {
       res.json(error);
     }
@@ -36,12 +41,12 @@ const Controllers = {
     }
   },
 
-  editar: (req, res) => {
+  editar: async(req, res) => {
     try {
-      const { id, nome, email } = req.body;
-      const { indice } = req.params;
-      pessoa[indice] = { id, nome, email };
-      res.send("Informação EDITADA com sucesso!");
+      const { nome, email } = req.body;
+      const { id } = req.params;
+      await sequelize.query(`UPDATE pessoas SET nome = '${nome}', email = '${email}' WHERE id = ${id}`)
+      res.json("Informação EDITADA com sucesso!");
     } catch (error) {
       res.json(error);
     }

@@ -1,16 +1,21 @@
 const express = require("express");
 const app = express();
+
+//Para a aplicação entender formato JSON
 app.use(express.json());
+
 const Controllers = require("./controllers/controllers");
+
+//Uso do dotenv para guardar informações
 require('dotenv').config();
 const PORT = process.env.PORT;
-const Pessoa = require("./database/db");
-Pessoa.sync();
 
+
+//Rotas HTTP
 app.get("/", Controllers.buscar);
 app.get("/:id", Controllers.buscarID);
 app.post("/", Controllers.inserir);
-app.patch("/:id", Controllers.editar);
+app.put("/:id", Controllers.editar);
 app.delete("/:id", Controllers.excluir);
 
 app.listen(PORT, () => {

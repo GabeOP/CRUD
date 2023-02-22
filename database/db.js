@@ -18,7 +18,7 @@ try {
   console.log("Erro na conexão com o banco de dados. Erro: " + error);
 }
 
-sequelize.define("pessoas", {
+const Pessoa = sequelize.define("pessoas", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -33,4 +33,5 @@ sequelize.define("pessoas", {
     allowNull: false,
   },
 });
-module.exports = sequelize;
+module.exports = sequelize
+
