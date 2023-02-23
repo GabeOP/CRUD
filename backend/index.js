@@ -10,6 +10,9 @@ const Controllers = require("./controllers/controllers");
 require('dotenv').config();
 const PORT = process.env.PORT;
 
+// configurando o servidor para receber requisições qualquer origem
+const cors = require('cors')
+app.use(cors())
 
 //Rotas HTTP
 app.get("/", Controllers.buscar);

@@ -32,6 +32,7 @@ const Pessoa = sequelize.define("pessoas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  
 });
 module.exports = sequelize
 

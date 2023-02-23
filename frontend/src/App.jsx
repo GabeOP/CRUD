@@ -1,34 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Form from './components/Form';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [visualizar, setVisualizar] = useState([]);
+  const [nome, setNome] = useState();
+  const [email, setEmail] = useState();
+
+  
+    useEffect(() => {
+      axios.get("http://localhost:3000/")
+      .then(res=>{
+        const dadosPessoas = res.data
+        setVisualizar(dadosPessoas)
+      })
+    }, [])
+  
+  function cadastrarUsuario() {
+    axios.post("http://localhost:3000/", {nome: nome, email: email})
+    .then(res=>{
+      console.log(res)
+    })
+  }
+
+  function editarUsuario(req, res) {
+    const {id} = 
+    axios.put("http://localhost:3000/", {nome: nome, email: email})
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      {visualizar.map((item) => (
+        <div key={item.id}>
+          {item.id} - {item.nome} - {item.email}
+        </div>
+      ))}
+      <form onSubmit={cadastrarUsuario}>
+        <label htmlFor="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" onChange={(e) => setNome(e.target.value)}/>
+        <br />
+        <br />
+        <label htmlFor="email">Email:</label>
+        <input type="text" name="email" id="email" onChange={(e)=> setEmail(e.target.value)} />
+        <input type="submit" value="Cadastrar" />
+      </form>
+      
     </div>
-  )
+  );
 }
 
 export default App
+

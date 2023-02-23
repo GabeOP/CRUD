@@ -6,7 +6,7 @@ const Controllers = {
       const [results, metadatas] = await sequelize.query(
         "SELECT * FROM pessoas"
       );
-      results.length === 0 ? res.json({data: "Não há registros de pessoas."}) : res.json({data: results});
+      results.length === 0 ? res.json({data: "Não há registros de pessoas."}) : res.json(results);
     } catch (error) {
       res.json(error);
     }
@@ -21,7 +21,7 @@ const Controllers = {
       );
       results.map((item)=>{
         const teste = item.id
-        !teste ? res.json({data: "ID inválido. Tente novamente."}) : res.json({data:results});
+        !teste ? res.json({data: "ID inválido. Tente novamente."}) : res.json(results);
       })
       
     } catch (error) {
