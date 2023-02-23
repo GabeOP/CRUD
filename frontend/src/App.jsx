@@ -13,8 +13,8 @@ function App() {
     useEffect(() => {
       axios.get("http://localhost:3000/")
       .then(res=>{
-        const dadosPessoas = res.data
-        setVisualizar(dadosPessoas)
+          const dadosPessoas = res.data
+          setVisualizar(dadosPessoas)
       })
     }, [])
   
@@ -29,12 +29,20 @@ function App() {
     const {id} = 
     axios.put("http://localhost:3000/", {nome: nome, email: email})
   }
+  
+  function deletarUsuario(id) {
+    const confirma = confirm(`Você tem certeza que deseja excluir o usuário com id ${id}?`)
+    if(confirma){
+      axios.delete(`http://localhost:3000/${id}`)
+      setVisualizar(visualizar.filter(teste => teste.id !== id))
+    }
+  }
 
   return (
     <div>
       {visualizar.map((item) => (
         <div key={item.id}>
-          {item.id} - {item.nome} - {item.email}
+          {item.id} - {item.nome} - {item.email} <button onClick={() => deletarUsuario(item.id)}>Excluir</button>
         </div>
       ))}
       <form onSubmit={cadastrarUsuario}>
