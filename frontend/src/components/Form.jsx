@@ -51,7 +51,7 @@ export default function Form() {
           <button onClick={() => deletarUsuario(item.id)}>Excluir</button>
         </div>
       ))} */}
-        <form className="card mb-4 rounded-3 shadow-sm" id="formulario" onSubmit={cadastrarUsuario}>
+        <form className="card rounded-3 shadow-sm" id="formulario" onSubmit={cadastrarUsuario}>
           <div className="card-header text-bg-info py-3">
             <h4 id="tituloForm" className="">WhiteList</h4>
           </div>
@@ -88,7 +88,7 @@ export default function Form() {
               <option>Boleto bancário</option>
             </select>
           </div>
-          <input type="submit" value="Cadastrar" />
+          <input id="btnForm" type="submit" value="Finalizar" />
         </form>
       </div>
       <Footer />

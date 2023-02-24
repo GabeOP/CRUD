@@ -7,6 +7,9 @@
   background-color: #0a0a0af1!important;
 }
 
+#formulario{
+  max-width: 400px !important;
+}
 #formulario div{
   padding-bottom: 20px;
   padding-inline: 40px;
@@ -14,5 +17,32 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   gap: 4px;
+}
+
+#formulario h4{
+  color: white;
+  -webkit-text-stroke-width: .5px; /* largura da borda */
+  -webkit-text-stroke-color: #000; /* cor da borda */
+}
+#btnForm{
+  margin-block: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #93f3e8;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+@media (max-width: 430px){
+  #formulario {
+    width: 300px;
+  }
+  #formulario select {
+    width: 80%
+  }
 }
