@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'oitoBit';
+  src: url('../fonts/eight-bit-dragon.otf');
+}
+*{
+  font-family: 'oitoBit' !important;
+}

@@ -1,0 +1,19 @@
+#wrapperCard{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0af1!important;
+}
+#card{
+  text-align: center;
+}
+
+@media (min-width: 768px){
+  #wrapperCard{
+    flex-direction: row;
+    height: 80vh;
+    gap: 60px;
+  }
+}

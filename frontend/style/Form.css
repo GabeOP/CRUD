@@ -1,0 +1,18 @@
+#wrapForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #0a0a0af1!important;
+}
+
+#formulario div{
+  padding-bottom: 20px;
+  padding-inline: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}

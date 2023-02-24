@@ -1,0 +1,9 @@
+#navHeader{
+  border-bottom: 1px solid #0dcaf0;
+}
+
+@media (min-width: 768px){
+  #navHeader{
+    height: 10vh;
+  }
+}
