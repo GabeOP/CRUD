@@ -3,21 +3,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  padding-block: 30px;
   background-color: #0a0a0af1!important;
+  width: 100%;
 }
 
-#formulario{
-  max-width: 400px !important;
+#wrapInfos{
+  max-width: 300px;
+}
+#formulario {
+  width: 80%;
+
+}
+#formulario div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 #formulario div{
   padding-bottom: 20px;
-  padding-inline: 40px;
-  display: flex;
-  flex-direction: column;
+  padding-inline: 10px;
   align-items: center;
   text-align: center;
-
   gap: 4px;
 }
 
@@ -38,11 +45,19 @@
   padding: 10px;
 }
 
-@media (max-width: 430px){
+@media (min-width: 780px){
   #formulario {
-    width: 300px;
+    max-width: 765px;
   }
-  #formulario select {
-    width: 80%
+  .wrapInfos {
+    max-width: 287px;
+  }
+  #wrapInfos {
+    display: flex;
+    flex-direction: row !important;
+   min-width: 100%;
+
+    justify-content: space-around;
+    align-items: center;
   }
 }
