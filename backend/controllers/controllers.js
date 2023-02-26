@@ -31,9 +31,9 @@ const Controllers = {
 
   inserir: async (req, res) => {
     try {
-      const { nome, email } = req.body;
+      const { nome, email, endereco, forma_pagamento, num_cartao, nome_cartao, data_val, cvv } = req.body;
       await sequelize.query(
-        `INSERT INTO pessoas(nome, email) VALUES('${nome}', '${email}')`
+        `INSERT INTO pessoas(nome, email, endereco, forma_pagamento, num_cartao, nome_cartao, data_val, cvv) VALUES('${nome}', '${email}', '${endereco}', '${forma_pagamento}', ${num_cartao}, '${nome_cartao}', '${data_val}', ${cvv})`
       );
       res.json("Informação INSERIDA com sucesso!");
     } catch (error) {
@@ -43,9 +43,9 @@ const Controllers = {
 
   editar: async(req, res) => {
     try {
-      const { nome, email } = req.body;
+      const { nome, email, endereco, forma_pagamento, num_cartao, nome_cartao, data_val, cvv } = req.body;
       const { id } = req.params;
-      await sequelize.query(`UPDATE pessoas SET nome = '${nome}', email = '${email}' WHERE id = ${id}`)
+      await sequelize.query(`UPDATE pessoas SET nome = '${nome}', email = '${email}', endereco = '${endereco}', forma_pagamento = '${forma_pagamento}', '${num_cartao}', '${nome_cartao}', '${data_val}', '${cvv}' WHERE id = ${id}`)
       res.json("Informação EDITADA com sucesso!");
     } catch (error) {
       res.json(error);

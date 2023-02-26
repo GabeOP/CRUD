@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { Sequelize, DataTypes, STRING } = require("sequelize");
 require('dotenv').config()
 
 const sequelize = new Sequelize(
@@ -18,6 +18,7 @@ try {
   console.log("Erro na conexão com o banco de dados. Erro: " + error);
 }
 
+
 const Pessoa = sequelize.define("pessoas", {
   id: {
     type: DataTypes.INTEGER,
@@ -32,7 +33,34 @@ const Pessoa = sequelize.define("pessoas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  endereco: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }, 
+  forma_pagamento: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  num_cartao: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  nome_cartao: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  data_val: {
+    type: DataTypes.DATEONLY,
+    allowNull:false
+  },
+  cvv: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+  },{
+    timestamps: false
+  });
   
-});
+  Pessoa.sync()
 module.exports = sequelize
 
