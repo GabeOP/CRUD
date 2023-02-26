@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Form from './components/Form';
+import Cadastro from './components/Cadastro';
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: "/formulario",
     element: <Form/>
   },
+  {
+    path: "/cadastro",
+    element: <Cadastro/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
