@@ -1,9 +1,24 @@
 #navHeader{
   border-bottom: 1px solid #0dcaf0;
 }
+#imgLogo {
+  display: none;
+}
 
 @media (min-width: 768px){
   #navHeader{
     height: 10vh;
+  }
+  #tituloHeader {
+    font-size: 30px;
+    margin-right: 40px;
+  }
+  #ulHeader {
+    display: flex;
+    gap: 20px;
+  }
+  #imgLogo {
+    padding-block: 10px;
+    display: block;
   }
 }
