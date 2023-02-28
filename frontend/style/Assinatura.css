@@ -2,21 +2,31 @@
     height: 80vh;
     background-color: #0a0a0af1 !important;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 150px;
+}
+#mainAssinatura h2{
+    margin-top: 70px;
+    color: #0dcaf0;
+    text-align: center;
 }
 #bloco {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    width: 50%;
+    border: 3px solid #0dcaf0;
+    border-radius: 2px;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
 }
 
 .ReactModal__Overlay, .ReactModal__Overlay--after-open {
     background: rgba( 255, 255, 255, 0.35 ) !important;
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 1.5px );
+    backdrop-filter: blur( 3px );
     -webkit-backdrop-filter: blur( 13.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -25,28 +35,51 @@
     background-color: #0a0a0af1  !important;
     color: #0dcaf0;
     height: 70%;
+    max-width: 800px;
+    margin: auto
 }
 #cliente-user {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: red;
+    padding-top: 80px;
 }
 #cliente-user div {
     display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 #cliente-user div button:nth-child(1){
     border: none;
-    
+    background-color: #ffc107;
 }
 #cliente-user div button:nth-child(2){
-    background-color: rgb(116, 116, 255);
+    background-color: #dc3545;
 }
-#btnFechar{
-    position: absolute;
-    top: 90%;
-    left: 70%
+#wrapContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85%;
+}
+
+#wrapBtnFechar{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+#infosModal ul {
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#infosModal ul span {
+    text-decoration: underline;
+    color: #0dcaf0
 }
 
 @media (min-width: 700px){
