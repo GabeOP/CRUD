@@ -4,15 +4,10 @@ import Modal from "react-modal";
 import Footer from "./Footer";
 import Header from "./Header";
 import "../../style/Assinatura.css";
+import { useParams } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
-//    function editarUsuario(req, res) {
-//     const { id } = axios.put("http://localhost:3000/", {
-//       nome: nome,
-//       email: email,
-//     });
-//   }
 
 export default function ModalButton() {
   const [modalAberto, SetModalAberto] = useState(false);
@@ -25,9 +20,14 @@ export default function ModalButton() {
     SetModalAberto(false);
   }
 
-  //Parte que usa o banco de dados
+  //------------Parte que usa o banco de dados---------------
 
+
+  //Visualizar informações do banco de dados
   const [visualizar, setVisualizar] = useState([]);
+  
+  const [teste, setTeste] = useState();
+
 
   useEffect(() => {
     axios.get("http://localhost:3000/").then((res) => {
@@ -35,6 +35,33 @@ export default function ModalButton() {
       setVisualizar(dadosPessoas);
     });
   }, []);
+
+//Editar plano
+
+const [nome, setNome] = useState();
+  const [email, setEmail] = useState();
+  const [endereco, setEndereco] = useState();
+  const [forma_pagamento, setForma_pagamento] = useState();
+
+
+
+  //Resolver
+  const { id } = useParams()
+  function edit() {
+
+    if(nome || email || endereco === ""){
+
+      axios.put(`http://localhost:3000/17`, {
+        nome: nome,
+        email: email,
+        endereco: endereco
+        })
+    }else{
+            alert("teste")
+    }
+  }
+
+  //Cancelar plano
 
   function deletarUsuario(id) {
     const confirma = confirm(
@@ -61,7 +88,7 @@ export default function ModalButton() {
               contentLabel="Example Modal"
             >
               <div>
-                <h2>Mais informações sobre o </h2>
+                <h2>Mais informações sobre o plano</h2>
               </div>
 
               <hr></hr>
@@ -75,10 +102,15 @@ export default function ModalButton() {
                             <ul>
                               <li>
                                 Nome impresso no cartão:{" "}
-                                <span>{item.nome_cartao}</span>
+                                <input onChange={(e) => setNome(e.target.value)} placeholder={item.nome_cartao}></input>
                               </li>
                               <li>
-                                Data da compra: <span>{item.data_val}</span>
+                                Email:{" "}
+                                <input onChange={(e) => setEmail(e.target.value)}  placeholder={item.email}></input>
+                              </li>
+                              <li>
+                                Endereço:{" "}
+                                <input  onChange={(e) => setEndereco(e.target.value)}  placeholder={item.endereco}></input>
                               </li>
                               <li>
                                 Plano adquirido:
@@ -92,7 +124,7 @@ export default function ModalButton() {
                           </div>
 
                           <div id="btnsModal">
-                            <button>Editar</button>
+                            <button onClick={edit}>Editar</button>
                             <button onClick={() => deletarUsuario(item.id)}>
                               Cancelar assinatura
                             </button>

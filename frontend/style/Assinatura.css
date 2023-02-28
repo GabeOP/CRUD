@@ -10,6 +10,7 @@
     margin-top: 70px;
     color: #0dcaf0;
     text-align: center;
+    
 }
 #bloco {
     display: flex;
@@ -36,7 +37,11 @@
     color: #0dcaf0;
     height: 70%;
     max-width: 800px;
-    margin: auto
+    margin: auto;
+    
+}
+#modal h2 {
+    text-align: center;
 }
 #cliente-user {
     display: flex;
