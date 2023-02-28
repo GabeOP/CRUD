@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-block: 30px;
+  padding-block: 120px;
   background-color: #0a0a0af1!important;
   width: 100%;
+  
 }
 
 #wrapInfos{
@@ -13,7 +14,6 @@
 }
 #formulario {
   width: 80%;
-
 }
 #formulario div:nth-child(2) {
   display: flex;

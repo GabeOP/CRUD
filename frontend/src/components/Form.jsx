@@ -3,9 +3,9 @@ import axios from "axios";
 import "../../style/Form.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+
 export default function Form() {
-  const [visualizar, setVisualizar] = useState([]);
+
   const [nome, setNome] = useState();
   const [email, setEmail] = useState();
   const [endereco, setEndereco] = useState();
@@ -15,12 +15,7 @@ export default function Form() {
   const [data_val, setData_val] = useState();
   const [cvv, setCvv] = useState();
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/").then((res) => {
-      const dadosPessoas = res.data;
-      setVisualizar(dadosPessoas);
-    });
-  }, []);
+
 
   function cadastrarUsuario() {
     axios
@@ -39,20 +34,13 @@ export default function Form() {
       });
   }
 
-  function editarUsuario(req, res) {
-    const { id } = axios.put("http://localhost:3000/", {
-      nome: nome,
-      email: email,
-    });
-  }
 
-  function deletarUsuario(id) {
-    const confirma = confirm(
-      `Você tem certeza que deseja excluir o usuário com id ${id}?`
-    );
-    if (confirma) {
-      axios.delete(`http://localhost:3000/${id}`);
-      setVisualizar(visualizar.filter((teste) => teste.id !== id));
+
+  function verificar() {
+    if(!nome || !email || !endereco || !num_cartao || !nome_cartao || !data_val || !cvv) {
+      alert("Complete todos os campos.")
+    }else {
+      alert("Sua compra foi finalizada com sucesso!")
     }
   }
 
@@ -60,12 +48,7 @@ export default function Form() {
     <>
       <Header />
       <div id="wrapForm">
-        {/* {visualizar.map((item) => (
-        <div key={item.id}>
-          {item.id} - {item.nome} - {item.email}{" "}
-          <button onClick={() => deletarUsuario(item.id)}>Excluir</button>
-        </div>
-      ))} */}
+
         <form
           className="card rounded-3 shadow-sm"
           id="formulario"
@@ -145,7 +128,7 @@ export default function Form() {
             </div>
           </div>
 
-          <input id="btnForm" type="submit" value="Finalizar" />
+          <input onClick={verificar} id="btnForm" type="submit" value="Finalizar" />
 
         </form>
       </div>
