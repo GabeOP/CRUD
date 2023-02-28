@@ -69,7 +69,7 @@ export default function Footer() {
 
           <div className="col-md-5 offset-md-3 mb-3">
             <form>
-              <h5 id="h5Footer">Ajude Nós a Melhorar-mos!</h5>
+              <h5 id="h5Footer">Ajude-nos a melhorar!</h5>
               <p>Receba todo mês o que há de novo e emocionante de nós.</p>
               <div className="d-flex flex-column flex-sm-row w-100 gap-2">
                 <label className="visually-hidden">

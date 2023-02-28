@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../../style/Header.css'
-import Logo from '../../public/logo.png'
+import Logo from '../../img/logo.png'
 
 export default function Header() {
   return (
@@ -8,7 +8,7 @@ export default function Header() {
       <nav id='navHeader' className="bg-black navbar navbar-expand-md">
         <div className="container-fluid" id="container-navbar">
           <img id='imgLogo' src={Logo} alt="" />
-          <Link to={'/planos'} className="text-info navbar-brand " id='tituloHeader'>Shar'k Tech</Link>
+          <Link to={'/'} className="text-info navbar-brand " id='tituloHeader'>Shar'k Tech</Link>
           <button
             className="bg-info navbar-toggler"
             type="button"
@@ -23,7 +23,7 @@ export default function Header() {
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul id='ulHeader' className="navbar-nav me-auto mb-2 mb-md-0">
               <li className="nav-item">
-                <Link className="text-info nav-link" to={'/planos'}>
+                <Link className="text-info nav-link" to={'/'}>
                   Planos
                 </Link>
               </li>

@@ -11,7 +11,7 @@ import Assinatura from './components/Assinatura';
 
 const router = createBrowserRouter([
   {
-    path: "/planos",
+    path: "/",
     element: <App/>
   },
   {
