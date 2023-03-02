@@ -6,9 +6,9 @@ import Header from "./Header";
 import "../../style/Assinatura.css";
 import { useParams } from "react-router-dom";
 
+
+//===============Configurações Modal===============//
 Modal.setAppElement("#root");
-
-
 export default function ModalButton() {
   const [modalAberto, SetModalAberto] = useState(false);
 
@@ -20,14 +20,9 @@ export default function ModalButton() {
     SetModalAberto(false);
   }
 
-  //------------Parte que usa o banco de dados---------------
 
-
-  //Visualizar informações do banco de dados
+  //===============Método GET===============//
   const [visualizar, setVisualizar] = useState([]);
-  
-  const [teste, setTeste] = useState();
-
 
   useEffect(() => {
     axios.get("http://localhost:3000/").then((res) => {
@@ -35,41 +30,39 @@ export default function ModalButton() {
       setVisualizar(dadosPessoas);
     });
   }, []);
+  
 
-//Editar plano
-
+//===============Editar plano===============//
 const [nome, setNome] = useState();
   const [email, setEmail] = useState();
   const [endereco, setEndereco] = useState();
   const [forma_pagamento, setForma_pagamento] = useState();
 
 
+  const { id } = useParams()
 
   //Resolver
-  const { id } = useParams()
-  function edit() {
+  function edit(id) {
+    const confirma = confirm("Editando")
+    const data = {
+      nome: nome,
+      email: email,
+      endereco: endereco,
+      }
 
-    if(nome || email || endereco === ""){
-
-      axios.put(`http://localhost:3000/17`, {
-        nome: nome,
-        email: email,
-        endereco: endereco
-        })
-    }else{
-            alert("teste")
+    if(confirma){
+      axios.put(`http://localhost:3000/${id}}`, data);
     }
   }
 
-  //Cancelar plano
-
+  //===============Método DELETE===============//  
   function deletarUsuario(id) {
     const confirma = confirm(
       `Você tem certeza que deseja excluir a assinatura WhiteList?`
     );
     if (confirma) {
       axios.delete(`http://localhost:3000/${id}`);
-      setVisualizar(visualizar.filter((teste) => teste.id !== id));
+
     }
   }
   return (
@@ -102,15 +95,15 @@ const [nome, setNome] = useState();
                             <ul>
                               <li>
                                 Nome impresso no cartão:{" "}
-                                <input onChange={(e) => setNome(e.target.value)} placeholder={item.nome_cartao}></input>
+                                <input onChange={(e) => setNome(e.target.value)} defaultValue={item.nome_cartao}></input>
                               </li>
                               <li>
                                 Email:{" "}
-                                <input onChange={(e) => setEmail(e.target.value)}  placeholder={item.email}></input>
+                                <input onChange={(e) => setEmail(e.target.value)}  defaultValue={item.email}></input>
                               </li>
                               <li>
                                 Endereço:{" "}
-                                <input  onChange={(e) => setEndereco(e.target.value)}  placeholder={item.endereco}></input>
+                                <input  onChange={(e) => setEndereco(e.target.value)}  defaultValue={item.endereco}></input>
                               </li>
                               <li>
                                 Plano adquirido:
@@ -124,7 +117,7 @@ const [nome, setNome] = useState();
                           </div>
 
                           <div id="btnsModal">
-                            <button onClick={edit}>Editar</button>
+                            <button onClick={() => edit(item.id)}>Editar</button>
                             <button onClick={() => deletarUsuario(item.id)}>
                               Cancelar assinatura
                             </button>
